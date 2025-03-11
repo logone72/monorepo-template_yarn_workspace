@@ -1,0 +1,15 @@
+# EditorConfig is awesome: https://EditorConfig.org
+# Vscode extension으로 EditorConfig for VS Code를 설치하시면 자동으로 적용됩니다.
+
+# top-most EditorConfig file
+root = true
+
+[*]
+charset = utf-8
+end_of_line = lf
+insert_final_newline = true
+trim_trailing_whitespace = true
+
+[*.{ts,tsx,js,jsx,html,vue,css,scss,sass,less,stylus,style}]
+indent_style = space
+indent_size = 2

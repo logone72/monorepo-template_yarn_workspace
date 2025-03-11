@@ -1,0 +1,9 @@
+**/*.test.ts
+**/*.test.js
+**/*.spec.ts
+**/*.spec.js
+**/*.config.ts
+**/*.config.js
+**/*.tsbuildinfo
+src/
+tsconfig.json

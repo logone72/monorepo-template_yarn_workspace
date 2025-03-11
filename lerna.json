@@ -1,0 +1,15 @@
+{
+  "version": "independent",
+  "npmClient": "yarn",
+  "command": {
+    "version": {
+      "allowBranch": "main",
+      "message": "Patch version"
+    },
+    "publish": {
+      "allowBranch": "main",
+      "registry": "https://registry.npmjs.org"
+    }
+  },
+  "packages": ["packages/*"]
+}
