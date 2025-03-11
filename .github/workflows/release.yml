@@ -1,0 +1,54 @@
+on:
+  push:
+    tags:
+      - '@test/*@*'
+  workflow_dispatch:
+
+name: Publish with Lerna
+
+jobs:
+  deploy:
+    name: Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+
+      - name: Enable Corepack and prepare Yarn 4.6.0
+        run: corepack enable
+
+      - name: Install dependencies
+        run: yarn install
+
+      - name: Run tests
+        run: yarn test-all
+
+      - name: Build packages
+        run: yarn build-all
+
+      - name: Git Config
+        run: |
+          git config user.name "$(git log -n 1 --pretty=format:%an)"
+          git config user.email "$(git log -n 1 --pretty=format:%ae)"
+
+      # 임시 커밋: uncommitted 변경사항을 임시 커밋하여 working tree를 깨끗하게 만듭니다.
+      # yarn install, yarn build-all 등의 명령어를 실행하면 uncommitted 변경사항이 생길 수 있습니다.
+      - name: Temporary commit uncommitted changes
+        run: |
+          git add -A
+          git commit -m "Temporary commit for publish" || echo "Nothing to commit"
+
+      - name: Publish packages
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          NPM_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+        run: yarn lerna publish from-package --yes --no-private --no-git-reset
+
+      # publish 후 임시 커밋 되돌리기: 원래 상태로 복원합니다.
+      - name: Revert temporary commit
+        run: |
+          git reset --hard HEAD~1 || echo "No commit to revert"
