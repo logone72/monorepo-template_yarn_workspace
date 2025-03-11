@@ -1,1 +1,1 @@
-export * from './helpers/string-helper';
+export * from './helper/string-helper';
