@@ -15,8 +15,10 @@
 
 ## 프로젝트 목록
 
-- `packages/utils` - 테스트용 공통 함수 패키지입니다.
-- `packages/example` - 테스트용 패키지입니다.
+- `@test/utils`
+  - 테스트용 공통 함수 패키지입니다. (`packages/utils`)
+- `packages/example`
+  - 테스트용 패키지입니다.
 
 세부 내용은 각 패키지의 README.md를 참고해주세요.
 
@@ -170,4 +172,10 @@ yarn berry pnp 환경에서 ts `5.4.4+` 버젼을 사용하면 발생합니다.
 {
   "typescript.tsserver.experimental.useVsCodeWatcher": false
 }
+```
+
+###
+
+```
+yarn cache clean
 ```
