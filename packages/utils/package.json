@@ -1,6 +1,6 @@
 {
   "name": "@test/utils",
-  "version": "1.0.15",
+  "version": "0.0.0",
   "description": "test utils",
   "keywords": [],
   "main": "dist/cjs/index.cjs",
@@ -15,6 +15,9 @@
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.1"
   },
   "scripts": {
     "build:tsc": "tsc --emitDeclarationOnly",

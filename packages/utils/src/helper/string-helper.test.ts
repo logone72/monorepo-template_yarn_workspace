@@ -1,4 +1,10 @@
-import { capitalize, truncate, removeWhitespace, toKebabCase, reverse } from './string-helper';
+import {
+  capitalize,
+  truncate,
+  removeWhitespace,
+  toKebabCase,
+  reverse,
+} from './string-helper';
 
 describe('string-helper', () => {
   describe('capitalize', () => {
@@ -42,7 +48,9 @@ describe('string-helper', () => {
   describe('removeWhitespace', () => {
     it('모든 공백을 제거해야 한다', () => {
       expect(removeWhitespace('Hello World')).toBe('HelloWorld');
-      expect(removeWhitespace('   spaces   everywhere   ')).toBe('spaceseverywhere');
+      expect(removeWhitespace('   spaces   everywhere   ')).toBe(
+        'spaceseverywhere',
+      );
     });
 
     it('탭과 줄바꿈도 제거해야 한다', () => {
